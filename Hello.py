@@ -19,22 +19,33 @@ LOGGER = get_logger(__name__)
 
 
 def run():
+    #intro==================================================================
     st.set_page_config(
         page_title="Hello",
         page_icon="👋",
     )
 
-    st.write("## xxx Welcome ccc to Streamlit! 👋")
-
-   
+    st.write("### Selamat data pada aplikasi kami 👋")
 
     st.markdown(
         """
-        XXXX hallo
+        berikut adalah aplikasi yang dapat digunakan .....
         
     """
     )
+    #intro==================================================================
 
+    #input==================================================================
+    title = st.text_input('Movie title', 'Life of Brian')
+    st.write('The current movie title is', title)
+
+    sex = st.radio(
+        "Jenis Kelamin",
+        key="visibility",
+        options=["Laki-Laki", "Perempuan"],
+    )
+    st.write('Kelaminnya adalah', sex)
+    #input==================================================================
 
 if __name__ == "__main__":
     run()
