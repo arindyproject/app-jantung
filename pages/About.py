@@ -10,7 +10,7 @@ def run():
         page_icon="👋",
     )
 
-    st.write("#Welcome to my Project! 👋")
+    st.write("### Welcome to my Project! 👋")
 
     st.sidebar.success("Select a demo above.")
 
