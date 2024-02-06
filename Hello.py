@@ -36,15 +36,60 @@ def run():
     #intro==================================================================
 
     #input==================================================================
-    title = st.text_input('Movie title', 'Life of Brian')
-    st.write('The current movie title is', title)
+    name = st.text_input('Siapa Nama Anda?')
 
+    #age--------------------------------------------------------------------
+    age = st.number_input('Berapakah Usia Anda? (dalam tahun)', min_value=0)
+    #age--------------------------------------------------------------------
+
+    #sex--------------------------------------------------------------------
     sex = st.radio(
         "Jenis Kelamin",
         key="visibility",
         options=["Laki-Laki", "Perempuan"],
     )
-    st.write('Kelaminnya adalah', sex)
+    #sex--------------------------------------------------------------------
+
+    #cp---------------------------------------------------------------------
+    #Chest Pain = nyeri dada
+    cp = st.slider('Berapakah skala nyeri dada anda?', 0, 3)
+    #cp---------------------------------------------------------------------
+
+    #trestbps---------------------------------------------------------------
+    #Resting blood pressure = tekanan darah saat istirahat
+    trestbps = st.number_input('Berapakah tekanan darah anda saat istirahat?', min_value=0)
+    #trestbps---------------------------------------------------------------
+
+    #chol--------------------------------------------------------------------
+    #Chol = serum kolesterol
+    chol = st.number_input('Berapakah serum kolesterol anda?', min_value=0)
+    #chol--------------------------------------------------------------------
+
+    #fbs---------------------------------------------------------------------
+    #Fbs = fasting blood sugar atau gula darah puasa
+    fbs = st.number_input('Berapakah fasting blood sugar atau gula darah puasa anda?', min_value=0)
+    #fbs---------------------------------------------------------------------
+
+    #restecg-----------------------------------------------------------------
+    #Restecg = rekam jantung (ekg) 
+    restecg = st.number_input('rekam jantung (ekg)  anda?', min_value=0)
+    #restecg-----------------------------------------------------------------
+
+    #thalach-----------------------------------------------------------------
+    #Thalach = maksimum denyut jantung
+    thalach = st.number_input('Berapakah maksimum denyut jantung anda?', min_value=0)
+    #thalach-----------------------------------------------------------------
+
+    #exang-------------------------------------------------------------------
+    #Exang = nyeri dada karena aktivitas fisik
+    exang = st.number_input('Berapakah nyeri dada karena aktivitas fisik anda?', min_value=0)
+    #exang-------------------------------------------------------------------
+
+    #oldpeak-----------------------------------------------------------------
+    #Oldpeak = st depresi karena aktivitas fisik
+    oldpeak = st.number_input('Berapakah depresi karena aktivitas fisik anda?', min_value=0)
+    #oldpeak-----------------------------------------------------------------
+
     #input==================================================================
 
 if __name__ == "__main__":
