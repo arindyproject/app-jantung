@@ -1,7 +1,4 @@
 import streamlit as st
-from streamlit.logger import get_logger
-
-LOGGER = get_logger(__name__)
 
 
 def run():
@@ -12,7 +9,7 @@ def run():
 
     st.write("### Welcome to my Project! 👋")
 
-    st.sidebar.success("Select a demo above.")
+  
 
     st.markdown(
         """
