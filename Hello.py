@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import time
 import streamlit as st
 from streamlit.logger import get_logger
 import pandas as pd
@@ -42,7 +43,7 @@ def run():
         page_icon="👋",
     )
 
-    st.write("### Selamat data pada aplikasi kami 👋")
+    st.header("Selamat data pada aplikasi kami 👋", divider='rainbow')
 
     st.markdown(
         """
@@ -137,9 +138,44 @@ def run():
 
     #input==================================================================
 
-    st.write("##### Ringkasan Data")
+    #st.write("##### Ringkasan Data")
     df = pd.DataFrame(data)
-    st.write(df)
+    #st.write(df)
+
+
+    #submit==================================================================
+    if st.button('Prediksi'):
+        if(name == ''):
+            st.warning('Silahkan isi dahulu Nama anda!', icon="⚠️")
+        
+        if(age <= 0):
+            st.warning('Silahkan isi dahulu Usia anda!', icon="⚠️")
+
+        if(trestbps <= 0):
+            st.warning('Silahkan isi dahulu tekanan darah Sistol anda saat istirahat anda!', icon="⚠️")
+
+        if(chol <= 0):
+            st.warning('Silahkan isi dahulu serum kolesterol anda!', icon="⚠️")
+
+        if(fbs <= 0):
+            st.warning('Silahkan isi dahulu fasting blood sugar atau gula darah puasa anda!', icon="⚠️")
+
+        if(thalach <= 0):
+            st.warning('Silahkan isi dahulu maksimum denyut jantung anda!', icon="⚠️")
+
+        #Peroses Predisksi=================================================
+        if((name != '') and (age > 0) and (trestbps > 0) and (chol > 0) and (fbs > 0) and (thalach > 0) ):
+            progress_text = "Memulai Prediksi. Please wait...."
+            my_bar = st.progress(0, text=progress_text)
+
+            for percent_complete in range(100):
+                time.sleep(0.01)
+                my_bar.progress(percent_complete + 1, text=progress_text)
+            time.sleep(1)
+            my_bar.empty()
+        #Peroses Predisksi=================================================
+            
+    #submit==================================================================
 
 if __name__ == "__main__":
     run()
