@@ -187,7 +187,7 @@ def run():
             time.sleep(1)
             my_bar.empty()
 
-            
+            #mulai prediksi
             #--------------------------------------------------------------
             hasil = model.predict( df.drop(['name'], axis=1) )
             if(hasil[0]):
