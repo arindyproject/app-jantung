@@ -16,24 +16,31 @@ import time
 import streamlit as st
 from streamlit.logger import get_logger
 import pandas as pd
+from joblib import  load
+import numpy as np
+
+from sklearn.preprocessing import StandardScaler
 
 LOGGER = get_logger(__name__)
 
+scaler=load('std_scaler.bin')
+model = load('model.joblib') 
 
 
 def run():
     #data==================================================================
     data = {
         'name' : ['nama'],
-        'age': [0],
-        'sex': [0],
-        'cp': [0],
-        'trestbps': [0],
-        'chol': [0],
-        'fbs': [0],
-        'restecg': [0],
-        'thalach': [0],
-        'exang': [0]
+        'age': [0],      
+        'sex': [0],         
+        'cp' : [0],        
+        'trestbps': [0],   
+        'chol'    : [0],   
+        'fbs'     : [0],  
+        'restecg' : [0],    
+        'thalach' : [0],   
+        'exang'   : [0],  
+        'oldpeak' : [0],   
     }
     #data==================================================================
 
@@ -138,10 +145,16 @@ def run():
 
     #input==================================================================
 
+
+    #data===================================================================
     #st.write("##### Ringkasan Data")
     df = pd.DataFrame(data)
     #st.write(df)
 
+    columns_to_scale = ['age','trestbps','chol','thalach','oldpeak']
+    df[columns_to_scale] = scaler.transform(df[columns_to_scale])
+    #st.write(df)
+    #data===================================================================
 
     #submit==================================================================
     if st.button('Prediksi'):
@@ -173,6 +186,15 @@ def run():
                 my_bar.progress(percent_complete + 1, text=progress_text)
             time.sleep(1)
             my_bar.empty()
+
+            
+            #--------------------------------------------------------------
+            hasil = model.predict( df.drop(['name'], axis=1) )
+            if(hasil[0]):
+                st.success('Selamat kepada ' + name + ' anda bebas dari Dibabetes!!' , icon="😀")
+            else:
+                st.error( 'Sayang sekali ' + name + ' anda terkena Diabetes!!', icon="😭")
+            #--------------------------------------------------------------
         #Peroses Predisksi=================================================
             
     #submit==================================================================
