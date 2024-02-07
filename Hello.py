@@ -32,8 +32,7 @@ def run():
         'fbs': [0],
         'restecg': [0],
         'thalach': [0],
-        'exang': [0],
-        'oldpeak': [0]
+        'exang': [0]
     }
     #data==================================================================
 
@@ -95,12 +94,9 @@ def run():
 
     #trestbps---------------------------------------------------------------
     #Resting blood pressure = tekanan darah saat istirahat
-    trestbps = st.number_input('Berapakah tekanan darah anda saat istirahat?', min_value=0)
-    trestbps_val = 0
-    if(trestbps >= 120):
-        trestbps_val = 1
-    data['trestbps']  = [trestbps_val]
-    st.write("You selected: ", trestbps, ' : ', trestbps_val)
+    trestbps = st.number_input('Berapakah tekanan darah Sistol anda saat istirahat?', min_value=0)
+    data['trestbps']  = [trestbps]
+    st.write("You selected: ", trestbps)
     #trestbps---------------------------------------------------------------
 
     #chol--------------------------------------------------------------------
@@ -112,7 +108,11 @@ def run():
     #fbs---------------------------------------------------------------------
     #Fbs = fasting blood sugar atau gula darah puasa
     fbs = st.number_input('Berapakah fasting blood sugar atau gula darah puasa anda?', min_value=0)
-    data['fbs']  = [fbs]
+    fbs_val = 0
+    if(fbs >= 120):
+        fbs_val = 1
+    data['fbs']  = [fbs_val]
+    st.write("You selected: ", fbs, ' : ', fbs_val)
     #fbs---------------------------------------------------------------------
 
     #thalach-----------------------------------------------------------------
@@ -134,11 +134,6 @@ def run():
     st.write("You selected: ", exang, ' : ', exang_val)
     #exang-------------------------------------------------------------------
 
-    #oldpeak-----------------------------------------------------------------
-    #Oldpeak = st depresi karena aktivitas fisik
-    oldpeak = st.number_input('Berapakah depresi karena aktivitas fisik anda?', min_value=0)
-    data['oldpeak']  = [oldpeak]
-    #oldpeak-----------------------------------------------------------------
 
     #input==================================================================
 
