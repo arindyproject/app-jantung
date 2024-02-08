@@ -30,7 +30,6 @@ model = load('model.joblib')
 def run():
     #data==================================================================
     data = {
-        'name' : ['nama'],
         'age': [0],      
         'sex': [0],         
         'cp' : [0],        
@@ -61,7 +60,6 @@ def run():
     #input==================================================================
 
     name = st.text_input('Siapa Nama Anda?')
-    data['name'] = [name]
 
     #age--------------------------------------------------------------------
     age = st.number_input('Berapakah Usia Anda? (dalam tahun)', min_value=0)
@@ -185,7 +183,7 @@ def run():
 
             #mulai prediksi
             #--------------------------------------------------------------
-            hasil = model.predict( df.drop(['name'], axis=1) )
+            hasil = model.predict( df ) 
             if(hasil[0]):
                 st.success('Risiko anda menderita sakit jantung rendah!!, tetap jaga pola hidup yang sehat' , icon="😀")
             else:
