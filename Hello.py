@@ -24,7 +24,7 @@ from sklearn.preprocessing import StandardScaler
 LOGGER = get_logger(__name__)
 
 scaler=load('std_scaler.bin')
-model = load('model.joblib') 
+model = load('model.bin') 
 
 
 def run():
@@ -145,11 +145,11 @@ def run():
     #data===================================================================
     #st.write("##### Ringkasan Data")
     df = pd.DataFrame(data)
-    #st.write(df)
+    st.write(df)
 
     columns_to_scale = ['age', 'trestbps', 'chol', 'thalach']
     df[columns_to_scale] = scaler.transform(df[columns_to_scale])
-    #st.write(df)
+    st.write(df)
     #data===================================================================
 
     #submit==================================================================
