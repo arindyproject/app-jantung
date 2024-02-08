@@ -19,7 +19,7 @@ import pandas as pd
 from joblib import  load
 import numpy as np
 
-from sklearn.preprocessing import StandardScaler
+
 
 LOGGER = get_logger(__name__)
 
@@ -156,9 +156,7 @@ def run():
 
     #submit==================================================================
     if st.button('Prediksi'):
-        if(name == ''):
-            st.warning('Silahkan isi dahulu Nama anda!', icon="⚠️")
-        
+
         if(age <= 0):
             st.warning('Silahkan isi dahulu Usia anda!', icon="⚠️")
 
@@ -175,7 +173,7 @@ def run():
             st.warning('Silahkan isi dahulu maksimum denyut jantung anda!', icon="⚠️")
 
         #Peroses Predisksi=================================================
-        if((name != '') and (age > 0) and (trestbps > 0) and (chol > 0) and (fbs > 0) and (thalach > 0) ):
+        if((age > 0) and (trestbps > 0) and (chol > 0) and (fbs > 0) and (thalach > 0) ):
             progress_text = "Memulai Prediksi. Please wait...."
             my_bar = st.progress(0, text=progress_text)
 
