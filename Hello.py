@@ -36,11 +36,9 @@ def run():
         'cp' : [0],        
         'trestbps': [0],   
         'chol'    : [0],   
-        'fbs'     : [0],  
-        'restecg' : [0],    
+        'fbs'     : [0],      
         'thalach' : [0],   
-        'exang'   : [0],  
-        'oldpeak' : [0],   
+        'exang'   : [0],    
     }
     #data==================================================================
 
@@ -151,7 +149,7 @@ def run():
     df = pd.DataFrame(data)
     #st.write(df)
 
-    columns_to_scale = ['age','trestbps','chol','thalach','oldpeak']
+    columns_to_scale = ['age', 'trestbps', 'chol', 'thalach']
     df[columns_to_scale] = scaler.transform(df[columns_to_scale])
     #st.write(df)
     #data===================================================================
@@ -191,9 +189,9 @@ def run():
             #--------------------------------------------------------------
             hasil = model.predict( df.drop(['name'], axis=1) )
             if(hasil[0]):
-                st.success('Selamat kepada ' + name + ' anda bebas dari Dibabetes!!' , icon="😀")
+                st.success('Risiko anda menderita sakit jantung rendah!!, tetap jaga pola hidup yang sehat' , icon="😀")
             else:
-                st.error( 'Sayang sekali ' + name + ' anda terkena Diabetes!!', icon="😭")
+                st.error( 'Risiko anda menderita sakit jantung tinggi!!, segera konsultasikan ke Dokter terdekat', icon="💪")
             #--------------------------------------------------------------
         #Peroses Predisksi=================================================
             
