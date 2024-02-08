@@ -19,7 +19,7 @@ import pandas as pd
 from joblib import  load
 import numpy as np
 
-
+from sklearn.preprocessing import StandardScaler
 
 LOGGER = get_logger(__name__)
 
