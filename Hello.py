@@ -145,11 +145,11 @@ def run():
     #data===================================================================
     #st.write("##### Ringkasan Data")
     df = pd.DataFrame(data)
-    st.write(df)
+    #st.write(df)
 
     columns_to_scale = ['age', 'trestbps', 'chol', 'thalach']
     df[columns_to_scale] = scaler.transform(df[columns_to_scale])
-    st.write(df)
+    #st.write(df)
     #data===================================================================
 
     #submit==================================================================
